@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>insta485</title>
+    <style>
+      .topbar {
+        border: 5px outset lightblue;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <!--TOP BAR-->
+    <div class="topbar">
+      <a href='/'>home</a>
+      <a href='/explore/'>explore</a>
+      <a href='/users/{{username}}/'>{{username}}</a>
+      <h2>Insta485</h2>
+    </div>
+
+    <h2>Following</h2>
+
+    <!--FOLLOWING-->
+    {% for following in followings %}
+    <div>
+      {% for user in users %}
+        {% if following.username2 == user.username %}
+          <img src="{{ url_for('download_file', filename=user['filename'])}}" alt="Profile Image" width="30" height="30">
+          <a href='/users/{{following.username2}}/'>{{following.username2}}</a>
+          {% if username != following.username2 %}
+            <!--change to be follow or unfollow buttons-->
+            {% for person in my_following if (person.username2 == following.username2) %} <!--if I'm following-->
+              <p>following</p>
+              <form action="{{url_for('follow_button')}}?target={{url_for('following', user_url_slug = username)}}"  method="post" enctype="multipart/form-data">
+                <input type="submit" name="unfollow" value="unfollow"/>
+                <input type="hidden" name="username" value="{{user.username}}"/>
+                <input type="hidden" name="operation" value="unfollow"/>
+              </form>
+            {% else %}
+              <p>not following</p>
+              <form action="{{ url_for('follow_button')}}?target={{url_for('following', user_url_slug = username)}}" method="post" enctype="multipart/form-data">
+                <input type="submit" name="follow" value="follow"/>
+                <input type="hidden" name="username" value="{{user.username}}"/>
+                <input type="hidden" name="operation" value="follow"/>
+              </form>
+            {% endfor %}
+          {% endif %} <!--don't display "following" or "not following" for oneself-->
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <br>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>insta485</title>
+    <style>
+      .topbar {
+        border: 5px outset lightblue;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <!--TOP BAR-->
+    <div class="topbar">
+      <a href=/>home</a>
+      <a href=/explore/>explore</a>
+      <a href='/users/{{username}}/'>{{username}}</a>
+      <h2>Insta485</h2>
+    </div>
+
+    <!--NAME-->
+    <div>
+      <h1>{{user_url_slug}}</h1>
+    </div>
+
+    {% if username != user_url_slug %}
+      {% for person in my_following if (person.username2 == user_url_slug) %}
+      <p>following</p>
+      <form action="{{url_for('follow_button')}}?target={{url_for('user1', user_url_slug = user_url_slug)}}"  method="post" enctype="multipart/form-data">
+        <input type="submit" name="unfollow" value="unfollow"/>
+        <input type="hidden" name="username" value="{{user_url_slug}}"/>
+        <input type="hidden" name="operation" value="unfollow"/>
+      </form>
+      {% else %}
+      <p>not following</p>
+      <!-- Follow button -->
+      <form action="{{url_for('follow_button')}}?target={{url_for('user1', user_url_slug = user_url_slug)}}" method="post" enctype="multipart/form-data">
+        <input type="submit" name="follow" value="follow"/>
+        <input type="hidden" name="username" value="{{user_url_slug}}"/>
+        <input type="hidden" name="operation" value="follow"/>
+      </form>
+      {% endfor %}
+    {% endif %}
+
+    <!--IF USER == logged in user-->
+    {% if username == user_url_slug %}
+      <a href='/accounts/edit/'>Edit profile</a>
+
+      <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+      <form action="{{url_for('logout')}}" method="post" enctype="multipart/form-data">
+        <input type="submit" name="logout" value="Logout"/>
+      </form>
+
+    {% endif %}
+
+    <!--INFO - #posts/followers/following -->
+    <div>
+      <!--Num Posts-->
+      {% if posts|length == 1 %}
+        <p>1 post</p>
+      {% else %}
+        <p>{{posts|length}} posts</p>
+      {% endif %}
+
+      <!--Num Followers-->
+      {% if followers|length == 1 %}
+      <a href=/users/{{user_url_slug}}/followers/>1 follower</a>
+      {% else %}
+      <a href=/users/{{user_url_slug}}/followers/>{{followers|length}} followers</a>
+      {% endif %}
+      <br>
+
+      <!--Num Following-->
+      {% if following|length == 1 %}
+      <a href=/users/{{user_url_slug}}/following/>1 following</a>
+      {% else %}
+      <a href=/users/{{user_url_slug}}/following/>{{following|length}} following</a>
+      {% endif %}
+      <br>
+
+      <!--Print Fullname-->
+      {% for user in users %}
+        {% if user['username'] == user_url_slug %}
+          <p> {{user['fullname']}} </p>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if username == user_url_slug %}
+      <!--File upload (make new post)-->
+      <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+      <form action="{{url_for('handle_uploads')}}?target={{url_for('user1', user_url_slug = username)}}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required/>
+        <input type="submit" name="create_post" value="upload new post"/>
+        <input type="hidden" name="operation" value="create"/>
+      </form>
+    {% endif %}
+
+    <br>
+
+    <!--Posts preview -->
+    <div>
+    {% for post in posts %}
+      <a href="/posts/{{post['postid']}}/"><img src="{{ url_for('download_preview', filename=post['filename'])}}" alt="Post Preview" width="333" height="222"></a>
+    {% endfor %}
+    </div>
+
+  </body>
+</html>

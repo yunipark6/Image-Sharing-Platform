@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>insta485</title>
+    <style>
+      .topbar {
+        border: 5px outset lightblue;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <!--TOP BAR-->
+    <div class="topbar">
+      <a href='/'>home</a>
+      <a href="/explore/">explore</a>
+      <a href="/users/{{username}}/">{{username}}</a>
+      <h2>Insta485</h2>
+    </div>
+
+    <h2>Discover People</h2>
+
+    <!--NOT FOLLOWING-->
+    {% for user in not_following %}
+      <div>
+        <img src="{{ url_for('download_pic', filename=user['filename'])}}" alt="Profile Image" width="30" height="30">
+        <a href="/users/{{user.username}}/">{{user.username}}</a>
+        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+        <form action="{{ url_for('follow_button')}}?target={{url_for('explore')}}" method="post" enctype="multipart/form-data">
+          <input type="submit" name="follow" value="follow"/>
+          <input type="hidden" name="username" value="{{user.username}}"/>
+          <input type="hidden" name="operation" value="follow"/>
+        </form>
+      </div>
+    {% endfor %}
+  </body>
+</html>

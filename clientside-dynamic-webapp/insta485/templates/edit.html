@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>insta485</title>
+  </head>
+  <body>
+    <div class="topbar">
+      <a href='/'>home</a>
+      <a href='/explore/'>explore</a>
+      <a href='/users/{{users.username}}/'>{{users.username}}</a>
+      <h2>Insta485</h2>
+    </div>
+    <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+     <h1>{{users.username}}</h1>
+    <img src="{{ url_for('download_prof_edit', filename=users['filename'])}}" alt="Profile Image" width="30" height="30">
+    <form action="{{url_for('handle_accounts')}}?target={{url_for('user1', user_url_slug = users.username)}}" method= "post" enctype="multipart/form-data">
+        <p>Photo <input type="file" name="file" accept="image/*"/></p>
+        <p>Name <input type="text" name="fullname" value="{{users.fullname}}" required/></p>
+        <p>Email <input type="text" name="email" value="{{users.email}}" required/></p>
+        <input type="submit" name="update" value="submit"/>
+        <input type="hidden" name="operation" value="edit_account"/>
+      </form> 
+      <a href = "/accounts/password/"> Change password</a>
+      <a href = "/accounts/delete/"> Delete account</a>
+  </body>
+</html>

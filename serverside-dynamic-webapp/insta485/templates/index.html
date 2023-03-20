@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>insta485</title>
+    <style>
+      .topbar {
+        border: 5px outset lightblue;
+        background-color: lightgray;
+      }
+      .all-posts {
+        margin: 0;
+        background-color: pink;
+        text-align: center;
+      }
+      .all-posts > h1, .post {
+        margin: 10px;
+        padding: 5px;
+      }
+      .post {
+        background: lightblue;
+        width: 500px;
+        min-height: 500px;
+      }
+      .post > h2, p {
+        margin: 4px;
+        font-size: 90%
+      }
+    </style>
+  </head>
+<body>
+  <div class= "topbar">
+    <a href='/'>home</a>
+    <a href='/explore/'> explore</a>
+    <a href='/users/{{username}}/'> {{username}}</a>
+    <h2>Insta485</h2>
+  </div>
+
+  {% for post in posts %}
+    {% for person in following %}
+      {% if post.owner == person.username2 %}
+        <div class="all-posts">
+          <div class="post">
+            <!--POST IMAGES-->
+            {% for user in users %}
+              {% if user.username == post.owner %}
+                <img src="{{ url_for('download_file', filename=user['filename'])}}" alt="Profile Image" width="30" height="30">
+              {% endif %}
+            {% endfor %}
+            <a href='/users/{{post.owner}}/'>{{post.owner}}</a>
+            <a href='/posts/{{post.postid}}/'>{{post.created}}</a>
+            <img src="{{ url_for('download_file', filename = post['filename'])}}" alt="Post Image" width="500" height="333">
+
+
+            <!--Likes-->
+            {% if likes_list[post['postid'] - 1] == 1 %}
+            <p>1 like</p>
+            {% else %}
+              <p>{{likes_list[post['postid'] - 1]}} likes</p>
+            {% endif %}
+
+            <!-- like button -->
+            {% for like in likes if ((username == like.owner) and (like.postid == post.postid)) %}
+              <!-- Unlike button -->
+              <form action="{{url_for('like_unlike')}}?target={{url_for('show_index')}}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="unlike"/>
+                <input type="hidden" name="postid" value="{{post.postid}}"/>
+                <input type="submit" name="unlike" value="unlike"/>
+              </form>
+            {% else %}
+              <!-- Like button -->
+              <form action="{{url_for('like_unlike')}}?target={{url_for('show_index')}}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="like"/>
+                <input type="hidden" name="postid" value="{{post.postid}}"/>
+                <input type="submit" name="like" value="like"/>
+              </form>
+            {% endfor %}
+
+            <!--COMMENTS-->
+            {% for comment in comments %}
+              {% if post.postid == comment.postid %}
+                <a href='/users/{{comment.owner}}/'>{{comment.owner}}</a>
+                <p>{{comment.text}}</p>
+              {% endif %}
+            {% endfor %}
+
+            <!--Comment button-->
+            <form action="{{ url_for('handle_comments')}}?target={{url_for('show_index')}}" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="operation" value="create"/>
+              <input type="hidden" name="postid" value="{{post.postid}}"/>
+              <input type="text" name="text" required/>
+              <input type="submit" name="comment" value="comment"/>
+            </form>
+
+            </div>
+          </div>
+        {% endif %}
+    {% endfor %}
+  {% endfor %}
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>insta485</title>
+  <style>
+    .topbar {
+      border: 5px outset lightblue;
+      background-color: lightgray;
+    }
+    .all-posts {
+      margin: 0;
+      background-color: pink;
+      text-align: center;
+    }
+    .all-posts > h1, .post {
+      margin: 10px;
+      padding: 5px;
+    }
+    .post {
+      background: lightblue;
+      width: 500px;
+      min-height: 500px;
+    }
+    .post > h2, p {
+      margin: 4px;
+      font-size: 90%
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href='/'>home</a>
+    <a href='/explore/'>explore</a>
+    <a href='/users/{{username}}/'>{{username}}</a>
+    <h2>Insta485</h2>
+  </div>
+
+  <div class="all-posts">
+    <div class="post">
+      <!--POST IMAGES-->
+      <img src="{{ url_for('download_post_prof', filename=my_user['filename'])}}" alt="Profile Picture" width="30" height="30">
+      <a href='/users/{{posts.owner}}/'>{{posts.owner}}</a>
+      <a href='/posts/{{posts.postid}}/'>{{posts['created']}}</a>
+      <img src="{{ url_for('download_file_post', filename = posts['filename'])}}" alt="Image" width="500" height="333">
+
+      <!--LIKES-->
+      {% if likes_count == 1%}
+        <p>1 like</p>
+      {% else %}
+        <p>{{likes_count}} likes</p>
+      {% endif %}
+
+      {% for like in likes if ((username == like.owner) and (like.postid == posts.postid)) %}
+        <!-- Unlike button -->
+        <form action="{{url_for('like_unlike')}}?target={{url_for('post', postid_url_slug = posts.postid)}}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="operation" value="unlike"/>
+          <input type="hidden" name="postid" value="{{posts.postid}}"/>
+          <input type="submit" name="unlike" value="unlike"/>
+        </form>
+      {% else %}
+        <!-- Like button -->
+        <form action="{{url_for('like_unlike')}}?target={{url_for('post', postid_url_slug = posts.postid)}}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="operation" value="like"/>
+          <input type="hidden" name="postid" value="{{posts.postid}}"/>
+          <input type="submit" name="like" value="like"/>
+        </form>
+      {% endfor %}
+
+      <!--COMMENTS-->
+      {% for comment in comments %}
+        <a href='/users/{{comment.owner}}/'>{{comment.owner}}</a>
+        <p>{{comment.text}}</p>
+        {% if comment.owner == username %}
+          <!-- Delete comment button -->
+          <form action="{{ url_for('handle_comments')}}?target={{url_for('post', postid_url_slug = posts.postid)}}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="delete"/>
+            <input type="hidden" name="commentid" value="{{comment.commentid}}"/>
+            <input type="submit" name="uncomment" value="delete"/>
+          </form>
+        {% endif %}
+      {% endfor %}
+
+      <!--Comment button-->
+      <form action="{{ url_for('handle_comments')}}?target={{url_for('post', postid_url_slug = posts.postid)}}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="operation" value="create"/>
+        <input type="hidden" name="postid" value="{{posts.postid}}"/>
+        <input type="text" name="text" required/>
+        <input type="submit" name="comment" value="comment"/>
+      </form>
+
+      {% if posts.owner == username %}
+        <!-- Delete post button -->
+        <form action="{{url_for('handle_uploads')}}?target={{url_for('user1', user_url_slug = username)}}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="operation" value="delete"/>
+          <input type="hidden" name="postid" value="{{posts.postid}}"/>
+          <input type="submit" name="delete" value="delete this post"/>
+        </form>
+      {% endif %}
+
+
+    </div>
+  </div>
+</body>
+</html>

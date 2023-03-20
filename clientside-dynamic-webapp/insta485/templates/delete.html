@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>insta485</title>
+    <style>
+      .topbar {
+        border: 5px outset lightblue;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <a href='/'>home</a>
+      <a href='/explore/'>explore</a>
+      <a href='/users/{{username}}/'>{{username}}</a>
+      <h2>Insta485</h2>
+    </div>
+    <!-- DO NOT CHANGE THIS -->
+    <p>{{username}}</p>
+    <form action="{{url_for('handle_accounts')}}?target={{url_for('create')}}" method="post" enctype="multipart/form-data">
+        <input type="submit" name="delete" value="confirm delete account"/>
+        <input type="hidden" name="operation" value="delete"/>
+      </form>
+  </body>
+</html>
