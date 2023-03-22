@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>insta485</title>
+    <title>Pomelo</title>
+    <!-- Bootstrap Core CSS ––––––––––––––––––––––––––– -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
   </head>
+
   <body>
-    <!-- DO NOT CHANGE THIS (aside from styling) -->
-    <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
-      <input type="text" name="username" required/>
-      <input type="password" name="password" required/>
-      <input type="submit" value="login"/>
-      <input type="hidden" name="operation" value="login"/>
-    </form>
-    <p>Don't have an account? <a href = "/accounts/create/"> sign up</a></p>
+    <div class="container-fluid">
+      <div class="row fullscreen">
+        <div class="col-md-6" id="main-img"></div>
+        <div class="col-md-6">
+          <div class="top">
+            <h1>pomelo</h1>
+          </div>
+          <div id="login-box">
+            <h2 id="medium">Login</h2>
+            <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+              <input type="text" name="username" placeholder="Username or email" required/>
+              <input type="text" name="password" placeholder="Password" required/>
+              <input type="submit" value="login"/>
+              <input type="hidden" name="operation" value="login"/>
+            </form>
+            <div id="hline"></div>
+            <p id="medium">Don't have an account?</p>
+            <a href = "/accounts/create/"> sign up</a>
+          </div>
+          <div><h2 id="blurb">A Sharing Space for Creatives.</h2></div>
+        </div>
+      </div>
+
+    </div>
   </body>
 </html>

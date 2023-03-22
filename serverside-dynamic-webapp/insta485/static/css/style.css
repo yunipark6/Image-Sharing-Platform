@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@450&family=Noto+Sans+JP:wght@300;400&display=swap'); 
+
+:root {
+    /* Colors: */
+    --bg-light: #b3dee5;
+    --bg-dark: #31525b;
+    --accent-light: #faecb1;
+    --acccent-bright: #ffa101;
+
+    --body-text-color:black;
+    /* --link-hover:#B2B1AE; */
+     
+    /* Fonts */
+    --headings-font-family:'Montserrat', sans-serif;
+    --body-font-family:'Teko', sans-serif;
+}
+
+/*----------Text----------*/
+h1 {
+    font-family: var(--headings-font-family);
+    text-transform: uppercase;
+}
+.top h1 {
+    margin: 0px 0px 0px 3rem; /* top right bottom left */
+}
+h2 {
+    font-family: var(--body-font-family);
+}
+h2#blurb {
+    font-size: medium;
+    text-transform: uppercase;
+    margin: 3rem 0px 0px 3rem; /* top right bottom left */
+}
+h2#medium {
+    font-size: 20px; 
+    font-weight: lighter;
+    text-transform: uppercase;
+    margin: 0rem 0px 1.2rem 0rem; /* top right bottom left */
+}
+p#medium {
+    font-size: 15px; 
+    font-weight: lighter;
+    margin: 1rem 0px 1rem 0rem; /* top right bottom left */
+}
+
+/*----------General Styles----------*/
+body {
+    background-color: white;
+    font-family: var(--body-font-family);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--body-text-color);
+}
+.top {
+    width: 100%;
+    z-index: 100;
+    margin: 50px 0px 0px 0px; /* top right bottom left */
+}
+.fullscreen {
+    height: 700px;
+}
+
+/*---------------------------- LOGIN ----------------------------*/
+#main-img {
+    background-image: url('../img/sabbir-ahmed-01.jpeg');
+    background-size: cover;
+}
+#login-box {
+    margin: 100px 3rem 0px 3rem; /* top right bottom left */
+    max-width: 25rem;
+    min-width: 15rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+}
+#login-box input {
+    margin: 0px 0rem 10px 0rem; /* top right bottom left */
+    border: solid gray;
+    border-width: 1.5px; /* top right bottom left */
+    border-radius: 8px;
+}
+#login-box input[type=text]:focus{
+    outline: 2px double var(--acccent-bright);
+}
+#login-box input::placeholder {
+    font-family: var(--body-font-family);
+    font-size: 0.9rem;
+    padding: 4px;
+    color: var(--bg-dark);
+    opacity: 0.75;
+}
+#login-box input[type=text]:focus::placeholder {
+    opacity: 0.35;
+}
+div#hline {
+    width: 100px;
+    height: 1.9px;
+    background: var(--bg-dark);
+    margin: 1rem 0px 0px 0px; /* top right bottom left */
+    opacity: 20%;
+}
+
+/*---------------------------- INDEX ----------------------------*/
+.topbar {
+    border: 5px outset lightblue;
+    background-color: lightgray;
+}
+
+
+/*screen that is larger than the mobile view, Large Screen*/
+@media only screen and (max-width:767px) {
+    /*----------------- LOGIN -----------------*/
+    #main-img {
+        background-image: url('../img/sabbir-ahmed-01.jpeg');
+        background-size: cover;
+        height: 40%;
+    }
+    .top {
+        margin: 10px 0px 10px 0px; /* top right bottom left */
+    }
+    .top h1 {
+        margin: 0px 0px 50px 3rem; /* top right bottom left */
+    }
+    #login-box {
+        margin: 10px 2rem 0px 3rem; /* top right bottom left */
+    }
+}

@@ -1,0 +1,515 @@
+/*Mobile first*/
+/* import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@450&family=Noto+Sans+JP:wght@300;400&display=swap'); 
+
+:root {
+    /* Colors: */
+    --accent-dark-turq: #007A89;
+    --accent-light-turq: #00CCD8;
+    --bg-dark: #1C1C1C;
+    --bg-light: F7F2F0;
+    --bg-blue: #D1DEE0;
+    --body-text-color:#707070;
+    --link-hover:#B2B1AE;
+     
+    /* Fonts */
+    --headings-font-family:'Montserrat', sans-serif;
+    --body-font-family:'Teko', sans-serif;
+}
+
+/* body {
+    background-color:var(--bg);
+    font-family: var(--body-font-family);
+    font-weight: 300; */
+    /*  Convert px to rem:  1rem = 16px*/
+    /* font-size: 1rem; */
+    /*    line-height is 150% of the font size*/
+    /* line-height: 1.6;
+    color: var(--body-text-color);
+} */
+body {
+    position: relative;
+}
+.text-align {
+    /* align-items: center; */
+    text-align: center;
+}
+
+/*----------------------------- Heading Styles -----------------------------*/
+h1 {
+    font-family: 'Oriya Sangam MN';
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0.5rem;
+    font-size: x-large;
+    text-shadow: 0px 1px 2px rgb(0 0 0 / 50%);
+    position: relative;
+    margin-top: 260px;
+}
+h2 {
+    font-family: var(--headings-font-family);
+
+}
+h3 {
+    font-family: var(--headings-font-family);
+}
+h4 {
+    font-family: 'Telugu Sangam MN';
+    font-weight: 550;
+    font-size: 1rem;
+    line-height: 1.875;
+    letter-spacing: .4rem;
+}
+h5 {
+    font-family: var(--body-font-family);
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+h6 {
+    font-family: var(--headings-font-family);
+    font-weight: 450;
+    font-size: 0.9rem;
+    color: #F64136;
+    padding: 8px 0px 0px 0px; /* top right bottom left */
+}
+h7 {
+    font-family: var(--headings-font-family);
+    font-weight: 550;
+    font-size: 1rem;
+    color: black;
+    padding: 0px 0px 0px 0px; /* top right bottom left */
+}
+p {
+    font-family: 'Teko', sans-serif;
+    font-weight: 250;
+    font-size: 0.9rem;
+    line-height: 1.875;
+    letter-spacing: .2rem;
+}
+.dark p { color: #bababa; }
+.light p { color: #1C1C1C; }
+#home p {
+    color: white;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    font-size: 0.75rem;
+}
+
+/*----------------------------- Section Intro Styles -----------------------------*/
+.section-intro {
+    display: flex;
+    justify-content: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    position: relative;
+    text-align: left;
+}
+.section-intro h2 {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+}
+.section-intro h2.dark { color: white; }
+.section-intro h2.light { color: #1C1C1C; }
+.dark .section-intro h2 { color: white; }
+.light .section-intro h2 { color: #1C1C1C; }
+
+.section-intro h3 {
+    font-weight: 400;
+    font-size: 0.6rem;
+    line-height: 1.875;
+    margin-bottom: 0.3rem;
+    letter-spacing: .2rem;
+}
+.dark .section-intro h3 { color: var(--accent-light-turq); }
+.light .section-intro h3 { color: var(--accent-dark-turq); }
+
+.section-intro p {
+    font-weight: 300;
+    font-size: 0.8rem;
+    line-height: 1.875;
+    letter-spacing: .15rem;
+}
+#profile p {
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: 300;
+    font-size: 0.8rem;
+    line-height: 1.875;
+    letter-spacing: .15rem;
+}
+
+/*----------------------------- Lists -----------------------------*/
+ul {
+    font-weight: 250;
+    font-size: 0.8rem;
+    line-height: 1.875;
+    letter-spacing: .15rem;
+    color: #bababa;
+    list-style: none outside;
+}
+
+/*----------------------------- Navigation Bar -----------------------------*/
+/* ul#nav li a:active { background-color: transparent !important; } */
+ul#nav {
+    min-height: 48px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+ul#nav li {
+    list-style: none;
+    height: 36px;
+    display: inline-block;
+}
+ul#nav li a {
+    font-family: var(--body-font-family);
+    font-size: 0.5rem;
+    font-weight: 400;
+    padding: 8px 13px;
+    line-height: 50px;
+    text-decoration: none;
+    color: #fff;
+}
+ul#nav li a:active {
+    color: black;
+}
+ul#nav a.active {
+    color: #F64136;
+}
+
+#nav-wrap {
+    width: 100%;
+    height: 5.2rem;
+    letter-spacing: 2.5px;
+    z-index: 100;
+    position: fixed;
+    backdrop-filter: invert(80%) blur(10px);
+    /* display: flex; */
+}
+
+/*----------------------------- Header Styles -----------------------------*/
+header {
+    position: relative;
+    min-height: 500px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+header .social {
+    display: flex;
+    justify-content: space-around;
+    text-shadow: 0px 1px 2px rgb(0 0 0 / 80%);
+    align-items: center;
+    margin-right: 0px;
+    padding-left: 40%;
+    padding-right: 40%;
+}
+header .social li a {
+    color: #fff;
+}
+li {
+    line-height: 18px;
+}
+
+.top {
+    width: 105%;
+    height: 702px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+header .top {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/* header .scrolldown a {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -29px;
+    color: #fff;
+    display: block;
+    height: 42px;
+    width: 42px;
+    font-size: 42px;
+    line-height: 42px;
+    color: #fff;
+    border-radius: 100%;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+} */
+#home-img {
+    top: -64px;
+    left: -320px;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/*----------------------------- About Section -----------------------------*/
+#about {
+    background-color: #1C1C1C;
+    padding-top: 90px;
+    padding-bottom: 50px;
+    margin: 0px;
+}
+img#profile-img {
+    width: 7rem;
+    height: 7rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0rem 1rem 0rem 1rem;
+}
+#profile {
+    text-align: center;
+}
+#about #about-me {
+    align-items: normal;
+}
+
+/*----------------------------- Resume Section -----------------------------*/
+#resume {
+    background-color: #F7F2F0;
+    padding-top: 90px;
+    padding-bottom: 50px;
+    margin: 0px;
+}
+div#vline {
+    width: 2px;
+    height: 100%;
+    background: #7D9698;
+    margin-left: 25px;
+    opacity: 15%;
+    visibility: hidden;
+}
+/* .resume-entry {
+    padding-bottom: 2rem;
+} */
+#resume h5 {
+    padding-top: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #007A89;
+}
+#resume-symbol {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    padding: 0;
+}
+div#hline {
+    width: 30px;
+    height: 2px;
+    background: #7D9698;
+    margin: 8px 0px 0px 12px; /* top right bottom left */
+    opacity: 15%;
+}
+#resume p {
+    font-weight: 250;
+    font-size: 0.65rem;
+    line-height: 1.1;
+    letter-spacing: .1rem;
+    color: #3C3C3C;
+}
+
+/*----------------------------- Projects Section -----------------------------*/
+#projects {
+    background-color: #D1DEE0;
+    padding-top: 90px;
+    padding-bottom: 50px;
+    margin: 0px;
+}
+.project {
+    text-align: center;
+    padding: 0px 0px 2.5rem 0px; /* top right bottom left */
+}
+.project-img {
+    height: 10rem;
+    width: 15rem;
+    object-fit: cover;
+}
+/* .read-more {
+    background-color: #3C3C3C;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+} */
+.modal-object {
+    text-decoration: none;
+}
+#projects h5 {
+    padding: 10px 0px 0px 0px;
+}
+#projects p {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: 300;
+    font-size: 0.8rem;
+    line-height: 1.875;
+    letter-spacing: .15rem;
+}
+.project-section {
+    display: flex;
+    justify-content: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    position: relative;
+    text-align: center;
+}
+.project-section p {
+    font-size: small;
+    padding: 10px;
+}
+#project1-img {
+    padding: 10% 0px 0px 0%; /* top right bottom left */
+    object-fit: cover;
+}
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+/*----------------------------- Contact Section -----------------------------*/
+#contact {
+    background-image: url("../img/scan50.JPG");
+    background-size: cover;
+    padding-top: 175px;
+    margin: 0px;
+}
+
+/*screen that is larger than the mobile view, Large Screen*/
+@media only screen and (min-width:480px) {
+    /*------------- General -------------*/
+    .top {
+        width: 105%;
+        height: auto;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 702px;
+    }
+    .section-intro h2 {
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+    }
+    .section-intro h3 {
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.875;
+        margin-bottom: 0.3rem;
+        letter-spacing: .2rem;
+    }
+
+    /*------------- Navigation -------------*/
+    #nav-wrap {
+        width: 100%;
+        height: 3rem;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        z-index: 100;
+        position: fixed;
+        left: 0;
+        top: 0;
+        backdrop-filter: invert(80%) blur(10px);
+        display: flex;
+    }
+    ul#nav li {
+        height: 48px;
+    }
+    ul#nav li a {
+        padding: 8px 13px;
+        line-height: 50px;
+        text-decoration: none;
+        color: #fff;
+    }
+    ul {
+        font-weight: 250;
+        font-size: 0.8rem;
+        line-height: 1.875;
+        letter-spacing: .15rem;
+        color: #bababa;
+    }
+
+    /*------------- Home -------------*/
+    #home-img {
+        min-width: 100%;
+        top: auto;
+        left: auto;
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+        z-index: -1;
+    }
+    h1 {
+        font-size: xx-large;
+    }
+    #home p {
+        margin-left: 10rem;
+        margin-right: 10rem;
+        font-size: 1rem;
+    }
+
+    /*------------- About -------------*/
+    img#profile-img {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 0rem 1rem 0rem 0rem;
+    }
+
+
+
+    div#vline {
+        visibility: visible;
+    }
+    
+    /*------------- Resume -------------*/
+    #resume {
+        height: 770px;
+    }
+    #resume h5 {
+        padding-top: 1rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #007A89;
+    }
+    #resume-symbol {
+        visibility: visible;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    /*------------- Resume -------------*/
+    .project-img {
+        height: 12rem;
+        width: 18rem;
+    }
+}
