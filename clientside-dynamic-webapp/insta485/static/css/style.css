@@ -1,0 +1,35 @@
+/*Mobile first*/
+/* import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@450&family=Noto+Sans+JP:wght@300;400&display=swap'); 
+
+:root {
+    /* Colors: */
+    --accent-dark-turq: #007A89;
+    --bg-light: #B2B1AE;
+    --body-text-color:#707070;
+    --link-hover:#B2B1AE;
+     
+    /* Fonts */
+    --headings-font-family:'Montserrat', sans-serif;
+    --body-font-family:'Teko', sans-serif;
+}
+
+body {
+    position: relative;
+    background-color: var(--bg-light);
+    color: var(--body-text-color);
+}
+
+.login-box {
+    padding: 5rem;
+    border: black 5px;
+    box-shadow: black;
+    border-radius: 50%;
+}
+
+
+
+/*screen that is larger than the mobile view, Large Screen*/
+@media only screen and (min-width:480px) {
+    
+}
